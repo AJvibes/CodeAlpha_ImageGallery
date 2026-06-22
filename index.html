@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A modern glassmorphism image gallery built with HTML5, CSS3, and Vanilla JavaScript — CodeAlpha Internship Project" />
+  <meta name="author" content="Your Name" />
+  <title>Image Gallery | CodeAlpha Internship</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- External Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Animated background blobs -->
+  <div class="bg-blobs" aria-hidden="true">
+    <div class="blob"></div>
+    <div class="blob"></div>
+    <div class="blob"></div>
+    <div class="blob"></div>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <div class="header-tag">✦ Portfolio Showcase</div>
+    <h1>My Creative Image Gallery</h1>
+    <p class="subtitle">A curated collection of moments — from blooming petals to midnight code. Explore, filter, and immerse yourself in visual stories.</p>
+  </header>
+
+  <!-- Filter Navigation -->
+  <nav class="filters" id="filters" aria-label="Category filters">
+    <button class="filter-btn active" data-filter="all"> All</button>
+    <button class="filter-btn" data-filter="flowers"> Flowers</button>
+    <button class="filter-btn" data-filter="cars"> Cars</button>
+    <button class="filter-btn" data-filter="sunsets"> Sunsets</button>
+    <button class="filter-btn" data-filter="cartoons">Aesthetic Cartoons</button>
+    <button class="filter-btn" data-filter="animals"> Animals</button>
+    <button class="filter-btn" data-filter="anime"> Anime</button>
+    <button class="filter-btn" data-filter="fashion"> Dresses & Fashion</button>
+    <button class="filter-btn" data-filter="motorbikes"> Motorbikes</button>
+    <button class="filter-btn" data-filter="coding"> Coding</button>
+  </nav>
+
+  <!-- Gallery -->
+  <main class="gallery" id="gallery"></main>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image preview">
+    <button class="lb-btn lb-close" id="lbClose" aria-label="Close">✕</button>
+    <button class="lb-btn lb-prev" id="lbPrev" aria-label="Previous">‹</button>
+    <div class="lightbox-content">
+      <img class="lightbox-img" id="lbImg" src="" alt="" />
+    </div>
+    <button class="lb-btn lb-next" id="lbNext" aria-label="Next">›</button>
+    <div class="lb-caption" id="lbCaption"></div>
+    <div class="lb-counter" id="lbCounter">1 / 1</div>
+  </div>
+
+  <footer>
+    Crafted with <span>♥</span> using Glassmorphism · © 2026 Image Gallery
+  </footer>
+
+  <!-- External JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
