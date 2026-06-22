@@ -67,14 +67,23 @@ function renderGallery(filter = 'all') {
     card.className = 'card';
     card.dataset.index = images.indexOf(img);
     card.style.animationDelay = `${Math.min(idx * 0.05, 0.6)}s`;
+    
+    
+    const imgElement = document.createElement('img');
+    imgElement.src = img.src;
+    imgElement.alt = img.title;
+    imgElement.loading = 'lazy';
+    imgElement.decoding = 'async';
+    
     card.innerHTML = `
-      <img src="${img.src}" alt="${img.title}" loading="lazy" />
       <div class="card-badge">${getCategoryLabel(img.cat)}</div>
       <div class="card-overlay">
         <div class="card-title">${img.title}</div>
         <div class="card-action">View Image 🔍</div>
       </div>
     `;
+    
+    card.insertBefore(imgElement, card.firstChild);
     card.addEventListener('click', () => openLightbox(parseInt(card.dataset.index)));
     gallery.appendChild(card);
   });
@@ -84,18 +93,19 @@ function renderGallery(filter = 'all') {
 
 function getCategoryLabel(cat) {
   const map = {
-    flowers: ' Flowers',
-    cars: ' Cars',
-    sunsets: ' Sunsets',
-    cartoons: ' Cartoons',
-    animals: ' Animals',
-    anime: ' Anime',
-    fashion: ' Fashion',
-    motorbikes: ' Motorbikes',
-    coding: ' Coding'
+    flowers: '🌸 Flowers',
+    cars: '🚗 Cars',
+    sunsets: '🌅 Sunsets',
+    cartoons: '🎨 Cartoons',
+    animals: '🐾 Animals',
+    anime: '✨ Anime',
+    fashion: '👗 Fashion',
+    motorbikes: '🏍️ Motorbikes',
+    coding: '💻 Coding'
   };
   return map[cat] || cat;
 }
+
 
 let currentFilter = 'all';
 let currentList = images.map((_, i) => i);
@@ -109,7 +119,6 @@ document.getElementById('filters').addEventListener('click', (e) => {
 });
 
 
-  
 const lightbox  = document.getElementById('lightbox');
 const lbImg     = document.getElementById('lbImg');
 const lbCounter = document.getElementById('lbCounter');
@@ -163,6 +172,7 @@ document.addEventListener('keydown', (e) => {
   else if (e.key === 'ArrowLeft') prevImage();
   else if (e.key === 'Escape') closeLightbox();
 });
+
 
 let touchStartX = 0;
 lightbox.addEventListener('touchstart', (e) => {
